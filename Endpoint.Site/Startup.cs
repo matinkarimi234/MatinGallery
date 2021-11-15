@@ -1,6 +1,9 @@
+using MatinGallery.Application.Interfaces.Contexts;
+using MatinGallery.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +26,14 @@ namespace Endpoint.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Dependency
+            services.AddScoped<IDatabaseContext, DatabaseContext>();
+
+            //Connection To Database SqlServer
+            string connectionString = @"Data Source=LAPTOP-23VIAVEQ\SQL2019;Initial Catalog=MatinGalleryDb;Integrated Security=True;";
+            services.AddEntityFrameworkSqlServer().AddDbContext<DatabaseContext>(option => option.UseSqlServer(connectionString));
+
+
             services.AddControllersWithViews();
         }
 
