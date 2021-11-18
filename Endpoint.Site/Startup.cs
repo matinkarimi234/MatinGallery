@@ -1,4 +1,5 @@
 using MatinGallery.Application.Interfaces.Contexts;
+using MatinGallery.Application.Services.Users.Queries.GetUsers;
 using MatinGallery.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace Endpoint.Site
         {
             //Dependency
             services.AddScoped<IDatabaseContext, DatabaseContext>();
+            services.AddScoped<IGetUsersService, GetUsersService>();
 
             //Connection To Database SqlServer
             string connectionString = @"Data Source=LAPTOP-23VIAVEQ\SQL2019;Initial Catalog=MatinGalleryDb;Integrated Security=True;";

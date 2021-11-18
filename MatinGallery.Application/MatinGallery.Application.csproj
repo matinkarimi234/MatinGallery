@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -9,7 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MatinGallery.Common\MatinGallery.Common.csproj" />
     <ProjectReference Include="..\MatinGallery.Domain\MatinGallery.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Users\Commands\" />
   </ItemGroup>
 
 </Project>
