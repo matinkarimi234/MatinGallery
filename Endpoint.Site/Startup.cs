@@ -1,4 +1,6 @@
 using MatinGallery.Application.Interfaces.Contexts;
+using MatinGallery.Application.Services.Users.Commands.RegisterUser;
+using MatinGallery.Application.Services.Users.Queries.GetRoles;
 using MatinGallery.Application.Services.Users.Queries.GetUsers;
 using MatinGallery.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
@@ -30,6 +32,9 @@ namespace Endpoint.Site
             //Dependency
             services.AddScoped<IDatabaseContext, DatabaseContext>();
             services.AddScoped<IGetUsersService, GetUsersService>();
+            services.AddScoped<IGetUsersService, GetUsersService>();
+            services.AddScoped<IGetRolesService, GetRolesService>();
+            services.AddScoped<IRegisterUserService, RegisterUserService>();
 
             //Connection To Database SqlServer
             string connectionString = @"Data Source=LAPTOP-23VIAVEQ\SQL2019;Initial Catalog=MatinGalleryDb;Integrated Security=True;";
@@ -64,6 +69,13 @@ namespace Endpoint.Site
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }

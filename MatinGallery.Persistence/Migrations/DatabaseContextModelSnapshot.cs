@@ -32,6 +32,23 @@ namespace MatinGallery.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "Operator"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "Student"
+                        });
                 });
 
             modelBuilder.Entity("MatinGallery.Domain.Entities.Users.User", b =>

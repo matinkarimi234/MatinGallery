@@ -6,6 +6,6 @@ namespace MatinGallery.Application.Services.Users.Queries.GetUsers
 {
     public interface IGetUsersService
     {
-        List<GetUsersDto> Execute(RequestGetUserDto request);
+        ResultGetUserDto Execute(RequestGetUserDto request);
     }
 }
