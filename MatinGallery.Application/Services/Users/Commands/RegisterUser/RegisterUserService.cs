@@ -19,6 +19,19 @@ namespace MatinGallery.Application.Services.Users.Commands.RegisterUser
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(request.FullName))
+                {
+                    return new ResultDto<ResultRegisterUserDto>()
+                    {
+                        Data = new ResultRegisterUserDto()
+                        {
+                            UserId = 0,
+                        },
+                        IsSuccess = false,
+                        Message = "نام را وارد نمایید"
+                    };
+                }
+
                 if (string.IsNullOrWhiteSpace(request.Email))
                 {
                     return new ResultDto<ResultRegisterUserDto>()
@@ -32,7 +45,7 @@ namespace MatinGallery.Application.Services.Users.Commands.RegisterUser
                     };
                 }
 
-                if (string.IsNullOrWhiteSpace(request.FullName))
+                if (string.IsNullOrWhiteSpace(request.UserName))
                 {
                     return new ResultDto<ResultRegisterUserDto>()
                     {
@@ -41,9 +54,23 @@ namespace MatinGallery.Application.Services.Users.Commands.RegisterUser
                             UserId = 0,
                         },
                         IsSuccess = false,
-                        Message = "نام را وارد نمایید"
+                        Message = "نام کاربری را وارد نمایید"
                     };
                 }
+
+                if (string.IsNullOrWhiteSpace(request.Phone))
+                {
+                    return new ResultDto<ResultRegisterUserDto>()
+                    {
+                        Data = new ResultRegisterUserDto()
+                        {
+                            UserId = 0,
+                        },
+                        IsSuccess = false,
+                        Message = "تلفن همراه خود را وارد نمایید"
+                    };
+                }
+
                 if (string.IsNullOrWhiteSpace(request.Password))
                 {
                     return new ResultDto<ResultRegisterUserDto>()
@@ -56,6 +83,7 @@ namespace MatinGallery.Application.Services.Users.Commands.RegisterUser
                         Message = "رمز عبور را وارد نمایید"
                     };
                 }
+
                 if (request.Password != request.RePasword)
                 {
                     return new ResultDto<ResultRegisterUserDto>()

@@ -22,9 +22,14 @@ namespace MatinGallery.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //adding default values for Roles
             modelBuilder.Entity<Role>().HasData(new Role { Id = 1, Name = nameof(UserRoles.Admin) });
             modelBuilder.Entity<Role>().HasData(new Role { Id = 2, Name = nameof(UserRoles.Operator) });
             modelBuilder.Entity<Role>().HasData(new Role { Id = 3, Name = nameof(UserRoles.Student) });
+
+            // Making the email and Username Unique
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
         }
     }
 }

@@ -42,15 +42,15 @@
                                                             <td>@item.UserName</td>
                                                             <td>@item.Email</td>
                                                             <td>@item.Phone</td>
-                                                                @{ 
-                                                                    int now = int.Parse(DateTime.Now.ToString("yyyyMMdd"));
-                                                                    int dateOfBirth = int.Parse(item.DateOfBirth.ToString("yyyyMMdd"));
-                                                                    int age = (now - dateOfBirth) / 10000;
-                                                                }
+                                                            @{
+                                                                int now = int.Parse(DateTime.Now.ToString("yyyyMMdd"));
+                                                                int dateOfBirth = int.Parse(item.DateOfBirth.ToString("yyyyMMdd"));
+                                                                int age = (now - dateOfBirth) / 10000;
+                                                            }
                                                             <td>@age</td>
                                                             <td>@item.ParentPhone</td>
                                                             <td>
-               
+
                                                                 <button class="btn btn-info">ویرایش</button>
                                                                 <button class="btn btn-danger">حذف</button>
                                                                 <button class="btn btn-warning">غیر فعال</button>
@@ -75,5 +75,9 @@
 
     </div>
 </div>
+@section Scripts
+{
+
+}
 
 
