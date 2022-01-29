@@ -1,5 +1,6 @@
 using MatinGallery.Application.Interfaces.Contexts;
 using MatinGallery.Application.Services.Users.Commands.RegisterUser;
+using MatinGallery.Application.Services.Users.Commands.RemoveUser;
 using MatinGallery.Application.Services.Users.Queries.GetRoles;
 using MatinGallery.Application.Services.Users.Queries.GetUsers;
 using MatinGallery.Persistence.Contexts;
@@ -35,6 +36,7 @@ namespace Endpoint.Site
             services.AddScoped<IGetUsersService, GetUsersService>();
             services.AddScoped<IGetRolesService, GetRolesService>();
             services.AddScoped<IRegisterUserService, RegisterUserService>();
+            services.AddScoped<RemoveUserService, RemoveUserService>();
 
             //Connection To Database SqlServer
             string connectionString = @"Data Source=LAPTOP-23VIAVEQ\SQL2019;Initial Catalog=MatinGalleryDb;Integrated Security=True;";

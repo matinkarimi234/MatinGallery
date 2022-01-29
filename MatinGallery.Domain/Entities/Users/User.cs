@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatinGallery.Domain.Entities.Commons;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace MatinGallery.Domain.Entities.Users
 {
-    public class User
+    public class User:BaseEntity
     {
         #region Properties
-        public long Id { get; set; }
         public string FullName { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
