@@ -30,6 +30,9 @@ namespace MatinGallery.Persistence.Contexts
             // Making the email and Username Unique
             modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
             modelBuilder.Entity<User>().HasIndex(u => u.UserName).IsUnique();
+
+            //for not showing removed data
+            modelBuilder.Entity<User>().HasQueryFilter(p => !p.IsRemoved);
         }
     }
 }

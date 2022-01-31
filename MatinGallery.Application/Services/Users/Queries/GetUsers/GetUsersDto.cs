@@ -10,6 +10,7 @@ namespace MatinGallery.Application.Services.Users.Queries.GetUsers
         public string Email { get; set; }
         public string Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
+        public bool IsActive { get; set; }
         public string ParentPhone { get; set; }
     }
 }

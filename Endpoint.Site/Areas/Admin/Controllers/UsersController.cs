@@ -1,5 +1,6 @@
 ﻿using MatinGallery.Application.Services.Users.Commands.RegisterUser;
 using MatinGallery.Application.Services.Users.Commands.RemoveUser;
+using MatinGallery.Application.Services.Users.Commands.UserStatusChange;
 using MatinGallery.Application.Services.Users.Queries.GetRoles;
 using MatinGallery.Application.Services.Users.Queries.GetUsers;
 using Microsoft.AspNetCore.Mvc;
@@ -18,14 +19,18 @@ namespace Endpoint.Site.Areas.Admin.Controllers
         private readonly IGetRolesService _getRolesService;
         private readonly IRegisterUserService _registerUserService;
         private readonly RemoveUserService _removeUserService;
+        private readonly UserStatusChange _userStatusChange;
 
-
-        public UsersController(IGetUsersService getUsersService, IGetRolesService getRolesService, IRegisterUserService registerUserService, RemoveUserService removeUserService)
+        //Constructor
+        public UsersController(IGetUsersService getUsersService, IGetRolesService getRolesService,
+            IRegisterUserService registerUserService, 
+            RemoveUserService removeUserService, UserStatusChange userStatusChange)
         {
             _getUsersService = getUsersService;
             _getRolesService = getRolesService;
             _registerUserService = registerUserService;
             _removeUserService = removeUserService;
+            _userStatusChange = userStatusChange;
         }
 
 
@@ -75,6 +80,12 @@ namespace Endpoint.Site.Areas.Admin.Controllers
         public IActionResult Delete(long UserId)
         {
             return Json(_removeUserService.Execute(UserId));
+        }
+
+        [HttpPost]
+        public IActionResult UserStatusChange(long UserId)
+        {
+            return Json(_userStatusChange.Execute(UserId));
         }
     }
 }

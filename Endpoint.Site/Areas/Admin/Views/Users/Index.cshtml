@@ -53,7 +53,15 @@
 
                                                                 <button class="btn btn-info">ویرایش</button>
                                                                 <button class="btn btn-danger" onclick="DeleteUser(@item.Id)">حذف</button>
-                                                                <button class="btn btn-warning">غیر فعال</button>
+
+                                                                @if (item.IsActive)
+                                                                {
+                                                                    <button class="btn btn-warning" onclick="StatusChange(@item.Id)">غیر فعال</button>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <button class="btn btn-success" onclick="StatusChange(@item.Id)"> فعال کردن</button>
+                                                                }
                                                             </td>
                                                         </tr>
                                                     }
@@ -92,7 +100,7 @@
                 cancelButtonText: 'خیر'
             }).then((result) => {
                 var postData = {
-                    'UserId':UserId,
+                    'UserId': UserId,
                 };
                 $.ajax({
                     contentType: 'aplication/x-www-form-urlencoded',
@@ -125,6 +133,52 @@
             })
         }
 
+
+        function StatusChange(UserId) {
+            swal.fire({
+                title: 'تغییر وضعیت کاربر',
+                text: 'آیا از تغییر وضعیت این کاربر مطمئن هستید؟',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#7cacbe',
+                confirmButtonText: 'بله تغییر وضعیت انجام شود',
+                cancelButtonText: 'خیر'
+            }).then((result) => {
+                if (result.value) {
+                    var postData = {
+                        'UserId': UserId,
+                    };
+
+                    $.ajax({
+                        contentType: 'aplication/x-www-form-urlencoded',
+                        dataType: 'json',
+                        type: "POST",
+                        url: "UserStatusChange",
+                        data: postData,
+                        success: function (data) {
+                            if (data.isSuccess == true) {
+                                swal.fire(
+                                    'موفق!',
+                                    data.message,
+                                    'success',
+                                ).then(function (isConfirm) {
+                                    location.reload();
+                                });
+                            }
+                            else {
+                                swal.fire(
+                                    'هشدار',
+                                    data.message,
+                                    'warning'
+                                );
+                            }
+                        }
+                    })
+                }
+            })
+
+        }
     </script>
 }
 

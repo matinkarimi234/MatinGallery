@@ -17,6 +17,7 @@ namespace MatinGallery.Domain.Entities.Users
         public DateTime DateOfBirth { get; set; }
         public string Password { get; set; }
         public string ParentPhone { get; set; }
+        public bool IsActive { get; set; }
         #endregion
 
         public ICollection<UserInRole> UserInRoles { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MatinGallery.Application.Services.Users.Commands.RemoveUser
 {
-    interface IRemoveUserService
+    public interface IRemoveUserService
     {
         ResultDto Execute(long UserId);
     }

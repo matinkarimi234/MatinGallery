@@ -28,6 +28,7 @@ namespace MatinGallery.Application.Services.Users.Queries.GetUsers
                 Email = p.Email,
                 Phone = p.Phone,
                 DateOfBirth = p.DateOfBirth,
+                IsActive = p.IsActive,
                 ParentPhone = p.ParentPhone
             }).ToList();
             return new ResultGetUserDto
