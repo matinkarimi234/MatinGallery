@@ -18,13 +18,13 @@ namespace Endpoint.Site.Areas.Admin.Controllers
         private readonly IGetUsersService _getUsersService;
         private readonly IGetRolesService _getRolesService;
         private readonly IRegisterUserService _registerUserService;
-        private readonly RemoveUserService _removeUserService;
-        private readonly UserStatusChange _userStatusChange;
+        private readonly IRemoveUserService _removeUserService;
+        private readonly IUserStatusChange _userStatusChange;
 
         //Constructor
         public UsersController(IGetUsersService getUsersService, IGetRolesService getRolesService,
             IRegisterUserService registerUserService, 
-            RemoveUserService removeUserService, UserStatusChange userStatusChange)
+            IRemoveUserService removeUserService, IUserStatusChange userStatusChange)
         {
             _getUsersService = getUsersService;
             _getRolesService = getRolesService;

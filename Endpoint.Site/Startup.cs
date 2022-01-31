@@ -37,7 +37,7 @@ namespace Endpoint.Site
             services.AddScoped<IGetUsersService, GetUsersService>();
             services.AddScoped<IGetRolesService, GetRolesService>();
             services.AddScoped<IRegisterUserService, RegisterUserService>();
-            services.AddScoped<RemoveUserService, RemoveUserService>();
+            services.AddScoped<IRemoveUserService, RemoveUserService>();
             services.AddScoped<IUserStatusChange, UserStatusChange>();
 
             //Connection To Database SqlServer
